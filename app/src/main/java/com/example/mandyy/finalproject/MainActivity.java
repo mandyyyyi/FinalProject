@@ -13,10 +13,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import android.content.Intent;
 
 import org.json.JSONObject;
 
 import org.json.JSONObject;
+
+import java.util.Map;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     /** Default logging tag for messages from the main activity. */
@@ -38,6 +42,37 @@ public class MainActivity extends AppCompatActivity {
                 startAPICall();
             }
         });
+        Button next = (Button) findViewById(R.id.button01);
+        next.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), Main2Activity.class);
+                startActivityForResult(myIntent, 0);
+            }
+
+        });
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                "",
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(final JSONObject response) {
+                        Log.d(TAG, response.toString());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(final VolleyError error) {
+                Log.w(TAG, error.toString());
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Ocp-Apim-Subscription-Key", "Yf229d0f31115c5f25cea35172d49a89a");
+                Log.d(TAG, params.toString());
+                return params;
+            }
+        };
     }
 
     void startAPICall() {

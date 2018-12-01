@@ -27,6 +27,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="info"
-        android:visibility="visible" />
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="168dp" />
+
+    <android.support.constraint.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button01"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="132dp"
+        android:layout_marginRight="132dp"
+        android:text="hi"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="60dp" />
 
 </android.support.constraint.ConstraintLayout>
